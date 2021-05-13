@@ -1,4 +1,4 @@
-import { GET_TECHS, ADD_TECH, DELETE_TECH, TECHS_ERROR } from '../actions/types'
+import { GET_TECHS, ADD_TECH, DELETE_TECH, TECHS_ERROR, SET_LOADING } from '../actions/types'
 
 const initialState = {
   techs: null,
@@ -25,6 +25,11 @@ const techReducer = (state = initialState, action) => {
         ...state,
         techs: state.techs.filter(tech => tech.id !== action.payload),
         loading: false
+      }
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true
       }
     case TECHS_ERROR:
       console.error(action.payload)
